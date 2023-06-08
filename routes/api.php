@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PlaceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,5 @@ use Illuminate\Support\Facades\Route;
 Route::post('signup', [AuthController::class, 'signup']);
 Route::post('login', [AuthController::class, 'login']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::get('url', function() {
-        return response()->json(['message' => 'Authentication Complete'], 200);
-    });
+    Route::get('places', [PlaceController::class, 'index']);
 });
